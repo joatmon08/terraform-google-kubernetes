@@ -16,7 +16,7 @@ resource "google_container_cluster" "feature_flags" {
   }
 
   workload_identity_config {
-    identity_namespace = "${data.google_project.project.id}.svc.id.goog"
+    identity_namespace = "${var.project}.svc.id.goog"
   }
 }
 

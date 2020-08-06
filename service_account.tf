@@ -9,6 +9,6 @@ resource "google_service_account_iam_binding" "feature_flags_workload_identity" 
   role               = "roles/iam.workloadIdentityUser"
 
   members = [
-    "serviceAccount:${data.google_project.project.id}.svc.id.goog",
+    "serviceAccount:${var.project}.svc.id.goog",
   ]
 }

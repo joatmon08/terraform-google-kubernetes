@@ -3,6 +3,11 @@ variable "environment" {
   description = "environment of gke cluster. prepended to name."
 }
 
+variable "project" {
+  type = string
+  description = "GCP Project"
+}
+
 variable "version_identifier" {
   type        = string
   description = "version of stack. appended to name."
@@ -18,5 +23,3 @@ variable "zone" {
   description = "GCP Zone to deploy"
   default     = "us-central1-a"
 }
-
-data "google_project" "project" {}
