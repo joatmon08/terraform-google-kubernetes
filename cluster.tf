@@ -1,5 +1,4 @@
 resource "google_container_cluster" "feature_flags" {
-  count                    = var.enable_workload_identity ? 1 : 0
   provider                 = google-beta
   name                     = "${var.environment}-feature-flags-${var.version_identifier}"
   location                 = var.zone
@@ -21,11 +20,10 @@ resource "google_container_cluster" "feature_flags" {
 }
 
 resource "google_container_node_pool" "feature_flags" {
-  count      = var.enable_workload_identity ? 1 : 0
   provider   = google-beta
   name       = "${var.environment}-feature-flags-node-pool-${var.version_identifier}"
   location   = var.zone
-  cluster    = google_container_cluster.feature_flags.0.name
+  cluster    = google_container_cluster.feature_flags.name
   node_count = 1
 
   node_config {
